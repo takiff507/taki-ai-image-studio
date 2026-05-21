@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Taki AI Image Studio is a simple image and wallpaper generator built with Pollinations.ai."
+    />
+    <title>Taki AI Image Studio</title>
+    <link rel="stylesheet" href="styles.css?v=1" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="studio" aria-labelledby="app-title">
+        <form class="control-panel" id="generator-form">
+          <div class="brand-row">
+            <div>
+              <p class="eyebrow">Pollinations image generator</p>
+              <h1 id="app-title">Taki AI Image Studio</h1>
+            </div>
+            <a
+              class="built-link"
+              href="https://pollinations.ai"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Built with Pollinations.ai
+            </a>
+          </div>
+
+          <label class="field-label" for="prompt">Prompt</label>
+          <textarea
+            id="prompt"
+            name="prompt"
+            rows="6"
+            maxlength="800"
+            placeholder="A neon street cafe at night, cinematic lighting, rain reflections"
+            required
+          ></textarea>
+
+          <div class="prompt-actions" aria-label="Prompt presets">
+            <button type="button" class="chip" data-prompt="A clean 9:16 wallpaper of a futuristic mountain city at sunrise">
+              Wallpaper
+            </button>
+            <button type="button" class="chip" data-prompt="A realistic product photo of black wireless headphones on a glass table">
+              Product
+            </button>
+            <button type="button" class="chip" data-prompt="A friendly mascot logo for an AI image studio, simple vector style">
+              Logo
+            </button>
+            <button type="button" class="chip" data-prompt="An anime explorer standing under glowing trees, detailed background">
+              Anime
+            </button>
+          </div>
+
+          <div class="settings-grid">
+            <fieldset>
+              <legend>Style</legend>
+              <div class="segmented" role="radiogroup" aria-label="Style">
+                <label>
+                  <input type="radio" name="style" value="realistic" checked />
+                  <span>Realistic</span>
+                </label>
+                <label>
+                  <input type="radio" name="style" value="anime" />
+                  <span>Anime</span>
+                </label>
+                <label>
+                  <input type="radio" name="style" value="cinematic" />
+                  <span>Cinematic</span>
+                </label>
+                <label>
+                  <input type="radio" name="style" value="minimal" />
+                  <span>Minimal</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Size</legend>
+              <div class="segmented" role="radiogroup" aria-label="Image size">
+                <label>
+                  <input type="radio" name="size" value="1024x1024" checked />
+                  <span>1:1</span>
+                </label>
+                <label>
+                  <input type="radio" name="size" value="1280x720" />
+                  <span>16:9</span>
+                </label>
+                <label>
+                  <input type="radio" name="size" value="720x1280" />
+                  <span>9:16</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="key-row">
+            <label class="field-label" for="api-key">Publishable key</label>
+            <input
+              id="api-key"
+              name="api-key"
+              type="password"
+              autocomplete="off"
+              placeholder="Optional pk_ key"
+            />
+          </div>
+
+          <div class="actions-row">
+            <button class="primary-button" type="submit" id="generate-button">
+              Generate
+            </button>
+            <button class="secondary-button" type="button" id="clear-button">
+              Clear
+            </button>
+          </div>
+
+          <p class="status" id="status" role="status" aria-live="polite">
+            Ready
+          </p>
+        </form>
+
+        <section class="preview-panel" aria-label="Image preview">
+          <div class="preview-frame" id="preview-frame">
+            <img id="generated-image" alt="Generated result" hidden />
+            <div class="empty-state" id="empty-state">
+              <span class="empty-mark">AI</span>
+              <p>Your image will appear here</p>
+            </div>
+            <div class="loading-state" id="loading-state" hidden>
+              <span></span>
+              <p>Generating</p>
+            </div>
+          </div>
+
+          <div class="image-tools">
+            <a class="secondary-button" id="download-link" download="taki-ai-image.png" hidden>
+              Download
+            </a>
+            <button class="secondary-button" type="button" id="copy-url-button" disabled>
+              Copy URL
+            </button>
+            <a
+              class="secondary-button"
+              href="https://gen.pollinations.ai/image/models"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Models
+            </a>
+          </div>
+
+          <div class="history-strip" id="history-strip" aria-label="Recent images"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js?v=1"></script>
+  </body>
+</html>
